@@ -1,0 +1,18 @@
+[package]
+script_dir = scripts
+test_command = cd testing && btest -c btest.cfg
+summary = Scripts are capable of detecting exfil that leverages multithreading
+description = scripts are capable of detecting exfil that leverages multithreading. 
+	By aggregating the numerous data streams created by multithreading, 
+	exfiltration attempts that previously evaded network detection through many small data streams will now be noticed by Zeek.
+depends = 
+	zeek >=4.0.0
+
+[template]
+source = https://github.com/naorbarlev/multithread-exfil-detection
+version = v3.0.2
+zkg_version = 2.14.0
+
+[template_vars]
+name = multithread-exfil-detection
+
