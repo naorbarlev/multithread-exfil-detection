@@ -54,6 +54,6 @@ event connection_established(c: connection)
 
 	if ( c$id$orig_h !in watched_subnets_conn )
 		return;
-	print "connection_established";
+
 	Exfil::watch_connection(c, settings_conn);
 	}
