@@ -4,6 +4,7 @@
 # For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 
 module Exfil;
+@load ./main.zeek
 
 ## This function determines if exfiltration has occurred via multithreading
 event Exfil::thread_check(c: connection, s: Settings, b: count)

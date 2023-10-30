@@ -33,6 +33,7 @@
 ##! Watch all TCP,UDP,ICMP flows for Data Exfil
 
 module Exfil;
+@load ./main.zeek
 
 export {
 	## Defines which subnets are monitored for data exfiltration
@@ -42,7 +43,7 @@ export {
 	## Defines whether connections with local destinations should be monitored for data exfiltration
 	global ignore_local_dest_conn: bool = T &redef;
 
-	## Defines the thresholds and polling interval for the exfil framework. See main.bro for more details.
+	## Defines the thresholds and polling interval for the exfil framework. See main.zeek for more details.
 	global settings_conn: Settings &redef;
 }
 
@@ -53,6 +54,6 @@ event connection_established(c: connection)
 
 	if ( c$id$orig_h !in watched_subnets_conn )
 		return;
-
+	print "connection_established";
 	Exfil::watch_connection(c, settings_conn);
 	}

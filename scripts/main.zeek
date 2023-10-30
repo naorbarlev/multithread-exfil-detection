@@ -165,6 +165,7 @@ global thread_collection: threading_stats;
 
 event zeek_init() &priority=5
 	{
+	print "hi";
 	Log::create_stream(Exfil::LOG, [ $columns=Info, $ev=log_exfil ]);
 	Log::create_stream(Exfil::DEBUG, [ $columns=DebugInfo, $ev=log_debug ]);
 	}
@@ -181,7 +182,7 @@ function alert(c: connection, byte_cnt: count, n: Notice::Type, notice: bool)
 			rec$subject = c$ssl$subject;
 			}
 		rec$server_name = c$ssl$server_name;
-		rec$ja3 = c$ssl$ja3;
+		#		rec$ja3 = c$ssl$ja3;
 		#if ( c$ssl?$validation_status )
 		#	{
 		#	rec$validation_status = c$ssl$validation_status;
